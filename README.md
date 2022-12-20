@@ -25,10 +25,12 @@ DATA SEED is a simple web application that automatically creates User Interface 
 * ALLWAYS USE HTTPS!!!!
 ------------------------------------------------------------------
 
+
+
 1. CREATE SEED FOLDER AND COPY FILES
 Download seed.zip and unzip it and copy files into your public_html/seed folder.
 
-----------------------------------------------------------------------------------------------------------------------------------------------------
+
 How to identify your public_html folder:
 
 If you are not sure about public_html folder create a php test page with the following content and place it in the root folder of your site
@@ -41,7 +43,7 @@ print($_SERVER['DOCUMENT_ROOT']);
 
 Access this php page in order to check current web root folder. It will return something like /home/your_user_name/public_html, or something simillar.
 You should consider the equivalent of public_html from this structure.
-----------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 In the end your Seed folder should look like:
 /public_html/seed
@@ -69,6 +71,7 @@ your_database
 
 
 DO NOT CHANGE seed_... TABLES! THIS WILL KILL THE SEED!
+
 
 
 3. CONFIGURE ACCESS TO mySQL DATABASE
