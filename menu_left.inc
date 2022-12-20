@@ -88,7 +88,6 @@
         ?>
 
 
-        <br/><hr/><br/>
-        <li><a href='./raport_xml.php?app=_system&id=tableUsage'>&#9888; DevOps: table usage</a></li>
+        
     </ul>
 </div>

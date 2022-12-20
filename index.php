@@ -9,7 +9,7 @@ $table = "";
 
 <html>
 <head>
-    <title>Seed for MySQL - low code development</title>
+    <title>DATA-SSED for MySQL - low code development</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -49,18 +49,6 @@ $table = "";
         
     
     
-    
-    <br/><br/><br/><br/>
-    <hr/>
-    Learning & extensions:<br/><br/>
-
-    <div>
-    <?php
-    require_once("./show_install_exercise.inc");
-    require_once("./show_add_app.inc");
-    require_once("./show_app_reports.inc"); 
-    ?>
-    </div>
     
 </div>
     

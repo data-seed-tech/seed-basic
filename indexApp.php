@@ -83,8 +83,6 @@ $appIcon = $row->icon;
             
             
             
-        <hr/>
-        <?php require_once("./show_app_reports.inc"); ?>
         
     </div>
     
