@@ -9,7 +9,7 @@ $table = "";
 
 <html>
 <head>
-    <title>DATA-SSED for MySQL - low code development</title>
+    <title>DATA-SEED for MySQL - no code / low code development</title>
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
