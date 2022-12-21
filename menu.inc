@@ -9,5 +9,5 @@
      | &nbsp;
     <a href="./entityView.php?app=_system&table=seed_nomenclatures ">&#9733; Nomenclatures</a>&nbsp;
      | &nbsp;
-    <a href="./help.php">&#128712; Help</a>
+     <a target="_blank" href="https://data-seed.tech/tutorial.php">&#128712; Help</a>
 </div><br><br>
