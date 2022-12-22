@@ -3,7 +3,7 @@
 require_once("../connection.inc");
 /* CONNECTION SHOULD BE REPLACED WITH SOMETHING CUSTOMISED:
  * $conn = new mysqli("server", "user", "pasword", "database");
- * 
+ *
  * BE CAREFUL TO KEEP THE NAME $conn!!!
  * 
  * PLEASE SEE INSTALLATION STEPS ONLINE: data-seed.tech!!!
@@ -112,8 +112,8 @@ if($table == "")
             . " Parameters:\n\t"
             . "     table   = Entity name. To return all tables use * \n\t"
             . "     id      = The value of the PK to be returned\n\t";
-    
-    
+
+
     if($format == "")
     {
         print($output);
@@ -128,7 +128,7 @@ if($table == "")
         array_push($rez["records"], array("message" => $output));
         echo json_encode($rez);
     }
-    
+
     return;
 }
 
@@ -161,7 +161,7 @@ if($row = $result -> fetch_object())
 elseif($table != "*")
 {
     http_response_code(400);
-    
+
     $rez=array();
     $rez["records"]=array();
     array_push($rez["records"], array("error" => "Requested table does not exist! Try using * to retrieve all tables!"));
@@ -215,7 +215,7 @@ case 'GET':
 case 'POST':
     if(array_key_exists("records", $input_arr))
     /* CONVENTION: INPUT JSON SHOULD HAVE A ROOT NAMED records[] LIKE THIS:
-     * 
+     *
     {
     "records": [
             {
@@ -271,7 +271,7 @@ function getEntity($limit)
     global $conn, $table, $scope, $current_schema, $pk_name, $pk_value, $whereAttr, $whereValue, $whereClause;
     $rez=array();
     $rez["records"]=array();
-    
+
     if ($table === "*")
     {
         $query = "SELECT TABLE_NAME, TABLE_COMMENT "
@@ -294,7 +294,7 @@ function getEntity($limit)
             {
                 $query = $query . " WHERE ".$pk_name." = '" . $pk_value . "'";
             }
-            
+
             // filter by WHERE clause
             if ($pk_value == "" && $whereAttr != "" && $whereValue != "")
             {
@@ -307,7 +307,7 @@ function getEntity($limit)
                     $query = $query . " WHERE ".$whereAttr." LIKE '%" . $whereValue . "%'";
                 }
             }
-            
+
             if ($pk_value != "" && $whereAttr != "" && $whereValue != "")
             {
                 http_response_code(400);
@@ -315,7 +315,7 @@ function getEntity($limit)
                 echo json_encode($rez);
                 return;
             }
-            
+
             if ($whereAttr != "" && $whereValue == "")
             {
                 http_response_code(400);
@@ -323,7 +323,7 @@ function getEntity($limit)
                 echo json_encode($rez);
                 return;
             }
-            
+
             if ($whereAttr == "" && $whereValue != "")
             {
                 http_response_code(400);
@@ -331,7 +331,7 @@ function getEntity($limit)
                 echo json_encode($rez);
                 return;
             }
-            
+
             if ($whereAttr == "" && $whereValue == "" && $whereClause != "")
             {
                 http_response_code(400);
@@ -339,7 +339,7 @@ function getEntity($limit)
                 echo json_encode($rez);
                 return;
             }
-            
+
             if ($whereClause != "" && $whereClause != "LIKE" && $whereClause != "EQUAL")
             {
                 http_response_code(400);
@@ -347,8 +347,8 @@ function getEntity($limit)
                 echo json_encode($rez);
                 return;
             }
-            
-            
+
+
             // limit clause
             if ($limit != "")
             {
@@ -357,10 +357,10 @@ function getEntity($limit)
         }
     }
     //print($query);
-    
+
     $result = $conn -> query($query);
     //print_r($result);
-        
+
     $num = 0;
     if(!$result)
     {
@@ -374,7 +374,7 @@ function getEntity($limit)
     {
         $num = $result->num_rows;
     }
-    
+
     if($num > 0)
     {
         while ($row = $result->fetch_array(MYSQLI_ASSOC)){
@@ -382,7 +382,7 @@ function getEntity($limit)
             // this will make $row['name'] to just $name only extract($row);
             //print_r($row);
             //print_r(array_keys($row));
-            
+
             $item =$row;
 
             array_push($rez["records"], $item);
@@ -397,7 +397,7 @@ function getEntity($limit)
         $item = array("warning" => "No records found.");
         array_push($rez["records"], $item);
     }
-    
+
     echo json_encode($rez);
 }
 
@@ -408,12 +408,12 @@ function updateEntity()
     $rez=array();
     $rez["records"]=array();
     $errors = 0;
-    
+
     foreach ($input->records as $record)
     {
         $row = (array) $record;
         //print_r(array_keys($row));
-        
+
         $valori = "";
         $i = 1;
         foreach ($row as $key => $value)
@@ -434,15 +434,15 @@ function updateEntity()
                 }
                 $i++;
             }
-            
+
         }
 
         $query = "UPDATE " . $table . " SET " . $valori . $where_clause . ";";
 
         //print($query . "\n");
         $result = $conn -> query($query);
-        
-        
+
+
         if($conn->errno === 0)
         {
             array_push($rez["records"], array("ok" => $query));
@@ -457,8 +457,8 @@ function updateEntity()
             $errors = 1;
         }
     }
-    
-    
+
+
     if($errors == 0)
     {
         http_response_code(200);
@@ -477,11 +477,11 @@ function deleteEntity()
     $errors = 0;
     $rez=array();
     $rez["records"]=array();
-    
+
     if($pk_value != "")
     {
         $query = "DELETE FROM " . $table . " WHERE " . $pk_name . " = '" . $pk_value . "'";
-        
+
         //print($query . "\n");
         $result = $conn -> query($query);
 
@@ -516,7 +516,7 @@ function deleteEntity()
             }
 
             $query = "DELETE FROM " . $table . $where_clause . ";";
-            
+
             //print($query . "\n");
             $result = $conn -> query($query);
 
@@ -543,8 +543,8 @@ function deleteEntity()
         echo json_encode($rez);
         return;
     }
-    
-    
+
+
     if($errors == 0)
     {
         http_response_code(200);
@@ -564,12 +564,12 @@ function insertEntity()
     $rez=array();
     $rez["records"]=array();
     $errors = 0;
-    
+
     foreach ($input->records as $record)
     {
         $row = (array) $record;
         //print_r(array_keys($row));
-        
+
         $valori = "";
         $i = 1;
         foreach ($row as $key => $value)
@@ -589,8 +589,8 @@ function insertEntity()
 
         //print($query . "\n");
         $result = $conn -> query($query);
-        
-        
+
+
         if($conn->errno === 0)
         {
             array_push($rez["records"], array("ok" => $query));
@@ -605,7 +605,7 @@ function insertEntity()
             $errors = 1;
         }
     }
-    
+
     if($errors == 0)
     {
         http_response_code(200);
@@ -616,6 +616,3 @@ function insertEntity()
     }
     echo json_encode($rez);
 }
-
-
-
