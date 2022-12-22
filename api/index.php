@@ -5,6 +5,8 @@ require_once("../connection.inc");
  * $conn = new mysqli("server", "user", "pasword", "database");
  * 
  * BE CAREFUL TO KEEP THE NAME $conn!!!
+ * 
+ * PLEASE SEE INSTALLATION STEPS ONLINE: data-seed.tech!!!
  */
 
 header("Access-Control-Allow-Origin: *");
