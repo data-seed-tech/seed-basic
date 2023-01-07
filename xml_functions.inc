@@ -1,15 +1,7 @@
 <?php
-function GetXMLfromQuery($conn, $query, $root_element_name, $element_name)
+function GetXMLfromQuery($conn, $query, $root_element_name = 'records', $element_name = 'record')
 {
-    //print $query;
-/*
-$conn = new mysqli("localhost:3307", "root", "", "test");
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-//echo "Connected successfully";
-*/
+//print $query;
 
 // parametrii de input:
 //$query = "SELECT id_product, reference, name FROM table1";
@@ -100,7 +92,7 @@ return $xml_object;
 
 
 
-function GetXSLTable($root_element_name, $element_name, $link_address = 'reportItem.php', $link_id = 'id', $parent = '_rapoarte', $link_target='_blank', $action_link = "")
+function GetXSLTable($root_element_name = 'records', $element_name = 'record', $link_address = 'reportItem.php', $link_id = 'id', $parent = '_rapoarte', $link_target='_blank', $action_link = "")
 {
 //la $parent trebuie specificat uneori tableul in care editez curent
 //treaba se face punand &amp;table=
@@ -217,7 +209,7 @@ return $xsl_object;
 
 
 
-function GetXSLTableSUM($conn, $query, $root_element_name, $element_name, $link_address = 'reportItem.php', $link_id = 'id', $parent = '_rapoarte', $link_target='_blank')
+function GetXSLTableSUM($conn, $query, $root_element_name = 'records', $element_name = 'record', $link_address = 'reportItem.php', $link_id = 'id', $parent = '_rapoarte', $link_target='_blank')
 {
 $coloaneSUM = "";
 $coloaneAVG = "";
@@ -265,7 +257,7 @@ return $xsl_object;
 
 
 
-function GetXSL_CSV($root_element_name, $element_name)
+function GetXSL_CSV($root_element_name = 'records', $element_name = 'record')
 {
 $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" version=\"1.0\">
@@ -287,7 +279,7 @@ return $xsl_object;
 
 
 
-function GetXSL_IMPORT($root_element_name, $element_name)
+function GetXSL_IMPORT($root_element_name = 'records', $element_name = 'record')
 {
 $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" version=\"1.0\">
@@ -324,7 +316,7 @@ return $xsl_object;
 
 
 
-function GetXSLCanonical($root_element_name, $element_name)
+function GetXSLCanonical($root_element_name = 'records', $element_name = 'record')
 {
     //pune rezultatul unui SELECT intr-un XML cu lista/element in locul $root_element_name si $element_name
     // NU FUNCTIONEAZA BINE  --> trebuie doar sa faca replace la $root_element_name cu 'lista' si la $element_name cu 'element'
@@ -355,7 +347,7 @@ return $xsl_object;
 
 
 
-function PrintXMLfromQuery($conn, $query, $root_element_name, $element_name)
+function PrintXMLfromQuery($conn, $query, $root_element_name = 'records', $element_name = 'record')
 {
 // LOOP PRIN INREGISTRARI:
 //print $query;
@@ -402,7 +394,7 @@ print $xml;
 
 
 // GetXSLInsertForm e INUTIL
-function GetXSLInsertForm($root_element_name, $element_name)
+function GetXSLInsertForm($root_element_name = 'records', $element_name = 'record')
 {
 $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" version=\"1.0\">
