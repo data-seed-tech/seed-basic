@@ -74,7 +74,7 @@ $appIcon = $row->icon;
                             WHERE table_name = '" . $tableName . "';";
                 $result_table = $conn -> query($query_table);
                 $row_table = $result_table -> fetch_object();
-                print($row_table->TABLE_COMMENT);
+                print(substr($row_table->TABLE_COMMENT, 0, 30) . "...");
                 ?>
             </div>&nbsp;&nbsp;&nbsp;&nbsp;
         <?php
