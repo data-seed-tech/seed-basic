@@ -17,7 +17,7 @@ CREATE TABLE `invoices` (
   PRIMARY KEY (`id`),
   KEY `customer` (`customerId`),
   CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customers` (`customerId`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4 COMMENT='Exercise: creating invoicing App';
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4 COMMENT='Invoices table for invoicing App exercise';
 
 
 INSERT INTO invoices (id, invoiceNumber, InvoiceDate, customerId)
