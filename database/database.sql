@@ -52,4 +52,3 @@ CREATE TABLE `seed_nomenclatures` (
   KEY `appCode` (`appCode`),
   CONSTRAINT `seed_nomenclatures_ibfk_1` FOREIGN KEY (`appCode`) REFERENCES `seed_apps` (`appCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8MB4 COLLATE=utf8mb4_unicode_ci COMMENT='Seed App nomenclatures configuration. A nomenclature contains the values that infrequent changed and are used as external reference. Examples: countries, currencies etc. In Seed, nomenclatures are automatically used as filters also.';
-
