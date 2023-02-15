@@ -1,8 +1,10 @@
 <?php
-$ip             = @$_SERVER[REMOTE_ADDR];
-$referrer       = @$_SERVER[HTTP_REFERER];
-$remote_host    = @$_SERVER[REMOTE_HOST];
-
+//$ip             = @$_SERVER[REMOTE_ADDR];
+$ip = isset($_SERVER["REMOTE_ADDR"]) ? $_SERVER["REMOTE_ADDR"] : '127.0.0.1';
+//$referrer       = @$_SERVER[HTTP_REFERER];
+$referrer = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"] : '';
+//$remote_host    = @$_SERVER[REMOTE_HOST];
+$remote_host = isset($_SERVER["REMOTE_HOST"]) ? $_SERVER["REMOTE_HOST"] : '';
 
 //$Page       = $PHP_SELF;
 $Page         = $_SERVER['PHP_SELF'];
